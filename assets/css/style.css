@@ -395,7 +395,7 @@ body::before {
     top: 0;
     bottom: 0;
     z-index: -1;
-    background: url(https://kalix.club/uploads/posts/2022-12/1671737009_kalix-club-p-fon-dlya-prezentatsii-programmist-instagra-2.jpg) center/cover no-repeat;
+    background: url("../images/img/main_bg.jpg") center/cover no-repeat;
   /* transform: scale(-1, 1); */
     filter: blur(5px);
 }
