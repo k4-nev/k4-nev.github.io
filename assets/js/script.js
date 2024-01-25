@@ -25,8 +25,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	navLink.forEach((item) => {
 		if (item.href === window.location.pathname || item.href === window.location.href) {
 			item.className += ' nav__link--active';
-		} else if (window.location.pathname == '/index.html') {
-			navLink[0].className += ' nav__link--active';
 		}
 	})
 
