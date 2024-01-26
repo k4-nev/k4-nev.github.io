@@ -7,8 +7,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		sidebar = document.querySelector('.sidebar'),
 		overlay = document.querySelector('.overlay'),
 		contentDiv = document.querySelector('.content'),
-		percent = document.querySelectorAll('.skills__percent'),
-		lines = document.querySelectorAll('.skills__line span'),
+		/* percent = document.querySelectorAll('.skills__percent'),
+		lines = document.querySelectorAll('.skills__line span'), */
 		navLink = document.querySelectorAll('.nav__list a');
 
 	chevron.addEventListener('click', () => {
@@ -53,11 +53,19 @@ window.addEventListener('DOMContentLoaded', () => {
 			})
 
 			item.classList.add('nav__link--active');
-			
 		});
 	})
 
-	percent.forEach((item, i) => {
-		lines[i].style.width = item.innerHTML;
-	});
+	navLink.forEach((item) => {
+		if (item.href === window.location.pathname || item.href === window.location.href) {
+			item.classList.add('nav__link--active');
+		}
+	})
+
+	/* function uploadPercentSkils() {
+		percent.forEach((item, i) => {
+			lines[i].style.width = item.innerHTML;
+		});
+	}
+	uploadPercentSkils(); */
 });
