@@ -387,6 +387,22 @@ textarea {
  /* Стандартный шрифт сайта */
 }
 
+::-webkit-scrollbar {
+    overflow: hidden;
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(182, 182, 182, 0.2980392157);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(64, 64, 64, 0.231372549);
+    border-radius: 5px;
+    border: 1px solid rgba(182, 182, 182, 0.2980392157);
+}
+
 body::before {
     content: "";
     position: fixed;
@@ -747,6 +763,11 @@ header__left {
 
 .main {
     padding: 70px 0 70px 300px;
+}
+
+.fadeOut {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .blocks {

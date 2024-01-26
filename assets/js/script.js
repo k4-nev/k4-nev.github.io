@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		close = document.querySelector('.nav__chevron--active'),
 		sidebar = document.querySelector('.sidebar'),
 		overlay = document.querySelector('.overlay'),
+		contentDiv = document.querySelector('.content'),
 		percent = document.querySelectorAll('.skills__percent'),
 		lines = document.querySelectorAll('.skills__line span'),
 		navLink = document.querySelectorAll('.nav__list a');
@@ -22,10 +23,38 @@ window.addEventListener('DOMContentLoaded', () => {
 		overlay.classList.toggle('overlay--active');
 	});
 
-	navLink.forEach((item) => {
-		if (item.href === window.location.pathname || item.href === window.location.href) {
-			item.className += ' nav__link--active';
-		}
+	function loadPage (url) {
+
+		fetch(url)
+			.then(response => response.text())
+			.then(html => {
+				const parser = new DOMParser();
+				const doc = parser.parseFromString(html, 'text/html');
+				const newContent = doc.querySelector('.content').innerHTML;
+
+				contentDiv.classList.add('fadeOut');
+				contentDiv.innerHTML = newContent;
+				document.title = doc.title;
+
+				history.pushState({}, '', url);
+				contentDiv.classList.remove('fadeOut');
+			});
+	}
+
+	navLink.forEach(item => {
+		item.addEventListener('click', (event) => {
+			event.preventDefault();
+
+			const url = event.currentTarget.getAttribute('href');
+			loadPage(url);
+
+			navLink.forEach((item) => {
+				item.classList.remove('nav__link--active');
+			})
+
+			item.classList.add('nav__link--active');
+			
+		});
 	})
 
 	percent.forEach((item, i) => {
